@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="id" class="notranslate" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="color-scheme" content="light only">
+    <meta name="format-detection" content="telephone=no">
+    <title>Wedding - Vintage Moment</title>
+    <meta name="title" content="Wedding - Vintage Moment">
+    <meta name="description"
+        content="Undangan digital vintage brown flowers - Undangan Online: Undangan digital modern untuk pernikahan dan acara spesial lainnya. Gratis coba dulu, bayar belakangan!">
+    <link rel="icon" type="image/x-icon" href="assets/images/themes/vintage-moment/vintage-moment.webp">
+
+    <!-- Local Image Reference -->
+    <meta itemprop="image" content="assets/images/themes/vintage-moment/vintage-moment.webp">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wedding - Vintage Moment">
+    <meta property="og:description"
+        content="Undangan digital vintage brown flowers - Undangan Online: Undangan digital modern untuk pernikahan dan acara spesial lainnya. Gratis coba dulu, bayar belakangan!">
+    <meta property="og:image" content="assets/images/themes/vintage-moment/vintage-moment.webp">
+
+    <!-- Styles -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/themesv2.css" />
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- Phosphor Icons -->
+    <link rel="stylesheet" type="text/css" href="assets/css/phosphor-icons.css" />
+
+    <!-- Fonts -->
+    <!-- Google Fonts (Offline) -->
+    <link rel="stylesheet" href="assets/css/google-fonts.css">
+
+    <style>
+        /* Local Font Imports */
+        @import url('assets/fonts/javassoul/style.css');
+        @import url('assets/fonts/laraboyok/style.css');
+        @import url('assets/fonts/brittany_signature/BrittanySignature.css');
+        @import url('assets/fonts/photograph_signature/fonts.css');
+        @import url('assets/fonts/heatwood/Heatwood.css');
+
+        :root {
+            --inv-bg: #bda888;
+            --inv-base: #3d1e17;
+            --inv-accent: #81423c;
+            --inv-border: #7b938f;
+            --font-base: "Work Sans", sans-serif;
+            --font-accent: 'Laraboyok', serif;
+            --font-latin: 'Javassoul', serif;
+            --menu-bg: #2e2a44;
+            --menu-inactive: #e4d0b3;
+            --menu-active: #81423c;
+            --btn-color: #ffffff;
+        }
+
+        .menu-item.is-active {
+            background-color: var(--menu-active);
+            color: var(--menu-inactive) !important;
+        }
+
+        .frame-mempelai,
+        .frame-couple {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Updated Paths for Frame Images */
+        .frame-couple::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-image: url(assets/images/themes/vintage-moment/frame-couple.webp);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .frame-mempelai::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url(assets/images/themes/vintage-moment/frame-couple.webp);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .editor .frame-mempelai::after,
+        .editor .frame-couple::after {
+            z-index: -1
+        }
+
+        .font-brittany-signature {
+            font-family: 'Brittany Signature';
+            line-height: 1.6 !important;
+        }
+
+        .font-photograph-signature {
+            font-family: 'Photograph Signature';
+            line-height: 1.6 !important;
+        }
+
+        .font-heatwood {
+            font-family: 'Heatwood';
+            line-height: 3 !important;
+        }
+
+        #YTMusic {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <main id="app">
+        <div id="modalOverlay" class="modal-backdrop fade" style="display: none;"></div>
+        <!-- Loader -->
+        <div id="loader" class="loader-wrapper"><span class="loader"><span class="loader-inner"></span></span></div>
+
+        <!-- music (Offline Warning: File might be missing) -->
+        <audio id="music" loop autoplay muted>
+            <source
+                src="assets/musics/bersamamu-jaz-a-bersamamu-jazbersamamu-bersamamujaz-saxophonecover-eumu2tnowge.mp3">
+        </audio>
+
+        <div id="workspace-container" class="position-fixed h-100 w-100" style="overflow: hidden">
+            <div id="panZoom" class="position-fixed h-100 w-100"
+                style="top: 0; right:0; bottom:0; left:0; transform-origin: 50% 50%;">
+                <div class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <div class="canvas not-open  ">
+                        <!-- invitation -->
+                        <div id="satuMomen" data-guest="Nama Tamu" data-group="VIP">
+                            <div class="satumomen_track">
+                                <ul class="satumomen_list">
+                                    <li class="satumomen_slide satumomen_cover">
+                                        <div class="container-mobile cover"
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                style="height:100%;width:100%;background-size:cover;z-index:2;position:relative;">
+                                                <div style="width:100%;">
+                                                    <div class="text-center editable animate__animated animate__fadeInDown animate__slower"
+                                                        style="font-size:16px;">Kamis<br />29 Januari 2026</div>
+                                                    <div
+                                                        class="py-4 frame-couple image-editable mx-auto animate__animated animate__zoomIn animate__slower">
+                                                        <div
+                                                            style="height:200px;width:200px;overflow:hidden;border-radius:100%;">
+                                                            <img src="assets/images/galleries/WhatsApp Image 2026-01-02 at 148.37.45.jpeg"
+                                                                alt="Rama Shinta"
+                                                                style="width: 100%;height: 100%;object-fit: cover;" />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="mt-5 text-center animate__animated animate__fadeInUp animate__slower mb-3">
+                                                        <div class="editable color-accent h3 mb-0 font-accent"
+                                                            style="font-size:30px;">Manda &amp; Ulum</div>
+                                                        <div class="editable" style="font-size:15px;">SAVE THE DATE
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center mx-auto" style="max-width:300px;">
+                                                        <div
+                                                            class="text-center mb-3 p-2 animate__animated animate__zoomIn animate__slower">
+                                                            <div class="editable mb-1 animate__animated animate__fadeInUp animate__slower"
+                                                                style="font-size:14px;">Kepada
+                                                                Yth;<br />Bapak/Ibu/Saudara/i</div>
+                                                            <div id="guestNameSlot"
+                                                                class="editable color-accent h5 font-weight-bold mb-1 animate__animated animate__fadeInUp animate__slower"
+                                                                style="font-size:16px;">Nama Tamu</div>
+                                                        </div>
+                                                        <button
+                                                            class="btn-open-invitation btn btn-primary rounded-pill mb-4 animate__animated animate__fadeInUp animate__slow"
+                                                            style="font-size:14px;">Buka Undangan</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 2 -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="d-flex flex-olumn justify-content-center align-items-center"
+                                                style="height:100%;">
+                                                <div class="text-center">
+                                                    <div class="editable mb-4 animate__animated animate__fadeInDown animate__slower"
+                                                        style="font-size:14.4px;">✤ Adz-Dzariyat : 49 ✤</div>
+                                                    <div class="color-accent editable quotes mb-3 animate__animated animate__zoomIn animate__slower"
+                                                        style="font-size:40px;">وَمِنْ كُلِّ شَيْءٍ
+                                                        خَلَقْنَا<br />زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُوْنَ</div>
+                                                    <div class="editable quotes animate__animated animate__fadeInUp animate__slower"
+                                                        style="font-size:13px;">Mahasuci Allah yang menciptakan
+                                                        makhluk-<br />Nya berpasang-pasangan</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+
+
+                                    <!-- Slide 4 -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="d-flex flex-olumn justify-content-center align-items-center"
+                                                style="height:100%;">
+                                                <div class="text-center">
+                                                    <div class="editable mb-4 animate__animated animate__fadeInDown animate__slower"
+                                                        style="font-size:14.4px;">✤ Bismillah ✤</div>
+                                                    <div class="color-accent editable quotes mb-3 animate__animated animate__zoomIn animate__slower"
+                                                        style="font-size:30px;">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+                                                    </div>
+                                                    <div class="editable quotes mb-3 animate__animated animate__fadeInUp animate__slower"
+                                                        style="font-size:13px;">Maha suci Allah yang menciptakan
+                                                        makhluk-<br />Nya berpasang-pasangan.</div>
+                                                    <div class="editable quotes animate__animated animate__fadeInUp animate__slower"
+                                                        style="font-size:13px;">Ya Allah perkenankanlah kami
+                                                        merangkaikan kasih<br />ayang yang kau ciptakan diantara kami
+                                                        untuk<br />mengikuti Sunnah Rasul-Mu dalam rangka<br />membentuk
+                                                        keluarga yang sakinah, mawaddah,<br />warahmah</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 5 Mempelai -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="d-flex justify-content-center align-items-center"
+                                                style="height:100%;">
+                                                <div>
+                                                    <div>
+                                                        <div
+                                                            class="py-4 frame-mempelai image-editable mx-auto animate__animated animate__zoomIn animate__slower">
+                                                            <div
+                                                                style="height:100px;width:100px;overflow:hidden;border-radius:100%;">
+                                                                <img src="assets/images/galleries/WhatsApp Image 2026-01-07 at 104.43.31.jpeg"
+                                                                    alt="Rama Shinta"
+                                                                    style="width: 100%;height: 100%;object-fit: cover;" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center animate__animated animate__fadeInLeft animate__slower"
+                                                            style="position:relative;">
+                                                            <div class="editable color-accent h4 mb-2 font-accent"
+                                                                style="font-size:24px;">Syntia Amanda Febriyani</div>
+                                                            <div class="editable" style="font-size:14.4px;">Putri Kedua
+                                                                dari<br />Bapak Kasuri &amp;
+                                                                Ibu Amonah</div>
+                                                        </div>
+
+                                                        <div class="editable mb-3 text-center animate__animated animate__fadeIn animate__slower font-photograph-signature"
+                                                            style="font-size:30px;">dengan</div>
+                                                        <div class="text-center animate__animated animate__fadeInRight animate__slower"
+                                                            style="position:relative;">
+                                                            <div class="editable color-accent h4 mb-2 font-accent"
+                                                                style="font-size:24px;">Miftakhul Ulum</div>
+                                                            <div class="editable mb-1" style="font-size:14.4px;">Putra
+                                                                Kedua dari<br />Bapak Muhrojin&amp; Ibu Endah Setyawati
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="py-4 frame-mempelai image-editable mx-auto animate__animated animate__zoomIn animate__slower">
+                                                            <div
+                                                                style="height:100px;width:100px;overflow:hidden;border-radius:100%;">
+                                                                <img src="assets/images/galleries/WhatsApp Image 2026-013-07 at 10.40.19.jpeg"
+                                                                    alt="Rama Shinta"
+                                                                    style="width: 100%;height: 100%;object-fit: cover;" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 6 Akad -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="d-flex justify-content-center flex-column align-items-center"
+                                                style="height:100%;">
+                                                <div
+                                                    class="mb-4 text-center animate__animated animate__fadeInDown animate__slower">
+                                                    <div class="editable" style="font-size:14.4px;">✤ Undangan Manten ✤
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 image-editable mx-auto animate__animated animate__fadeInDown animate__slower"
+                                                    style="height:auto;width:130px;overflow:hidden;">
+                                                    <img src="assets/images/galleries/301467-gallery-WG4gvfspKV.png"
+                                                        alt="Icon"
+                                                        style="width: 100%; height: 100%; object-fit: contain;" />
+                                                </div>
+                                                <div
+                                                    class="text-center animate__animated animate__fadeInDown animate__slower">
+                                                    <div class="editable color-accent font-weight-bold"
+                                                        style="font-size:14px;">✤ Akad Pernikahan ✤</div>
+                                                    <div class="editable" style="font-size:14px;">Pukul 08.00 WIB -
+                                                        Selesai</div>
+                                                </div>
+                                                <div
+                                                    class="mt-3 text-center animate__animated animate__zoomIn animate__slower">
+                                                    <div class="editable font-latin"
+                                                        style="font-size:50px;line-height:1.2;">Kamis</div>
+                                                    <div class="editable color-accent font-accent"
+                                                        style="font-size:50px;line-height:1.2;">29.01.26</div>
+                                                </div>
+                                                <div
+                                                    class="mt-2 text-center animate__animated animate__zoomIn animate__slower">
+                                                    <div class="editable color-accent font-weight-bold"
+                                                        style="font-size:14px;">✤ Kediaman Wanita ✤</div>
+                                                    <div class="editable" style="font-size:14px;">Dk.Mekarah
+                                                        Ds.Sidobandung<br />Kec.Balen Kab.Bojonegoro</div>
+                                                </div>
+                                                <div class="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower"
+                                                    style="height:auto;width:130px;overflow:hidden;">
+                                                    <img src="assets/images/galleries/301467-gallery-FMgCPTNp2h.png"
+                                                        alt="Icon"
+                                                        style="width: 100%; height: 100%; object-fit: contain;" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 7 Resepsi -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="d-flex justify-content-center flex-column align-items-center"
+                                                style="height:100%;">
+                                                <div
+                                                    class="mb-4 text-center animate__animated animate__fadeInDown animate__slower">
+                                                    <div class="editable" style="font-size:14.4px;">✤ Undangan Manten ✤
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 image-editable mx-auto animate__animated animate__fadeInDown animate__slower"
+                                                    style="height:auto;width:130px;overflow:hidden;">
+                                                    <img src="assets/images/galleries/301467-gallery-WG4gvfspKV.png"
+                                                        alt="Icon"
+                                                        style="width: 100%; height: 100%; object-fit: contain;" />
+                                                </div>
+                                                <div
+                                                    class="text-center animate__animated animate__fadeInDown animate__slower">
+                                                    <div class="editable font-latin"
+                                                        style="font-size:50px;line-height:1.2;">Kamis</div>
+                                                    <div class="editable color-accent font-weight-bold"
+                                                        style="font-size:14px;">✤ Resepsi ✤</div>
+                                                    <div class="editable" style="font-size:14px;">Pukul 10.00 WIB -
+                                                        Selesai</div>
+                                                </div>
+                                                <div
+                                                    class="mt-2 text-center animate__animated animate__zoomIn animate__slower">
+                                                    <div class="editable color-accent font-accent"
+                                                        style="font-size:50px;line-height:1.2;">29.01.26</div>
+                                                </div>
+                                                <div
+                                                    class="text-center animate__animated animate__zoomIn animate__slower">
+                                                    <div class="editable color-accent font-weight-bold"
+                                                        style="font-size:14px;">✤ Kediaman Wanita ✤</div>
+                                                    <div class="editable mt-2" style="font-size:14px;">Dk.Mekarah
+                                                        Ds.Sidobandung<br />Kec.Balen Kab.Bojonegoro</div>
+                                                </div>
+                                                <div class="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower"
+                                                    style="height:auto;width:130px;overflow:hidden;">
+                                                    <img src="assets/images/galleries/301467-gallery-FMgCPTNp2h.png"
+                                                        alt="Icon"
+                                                        style="width: 100%; height: 100%; object-fit: contain;" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 8 Doa (Removed) -->
+
+
+
+                                    <!-- Slide 10 Maps -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="px-3 d-flex justify-content-center align-items-center"
+                                                style="height:100%;">
+                                                <div style="width:100%;">
+                                                    <div>
+                                                        <div class="animate__animated animate__fadeInDown animate__slow"
+                                                            style="width:100%;margin:auto auto 20px;border-radius:10px;overflow:hidden;padding-bottom:100%;position:relative;">
+                                                            <iframe width="100%" height="100%"
+                                                                allowfullscreen="allowfullscreen"
+                                                                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d950.893838479271!2d111.94471266955313!3d-7.218900599549186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMTMnMDguMCJTIDExMcKwNTYnNDMuMyJF!5e1!3m2!1sid!2sid!4v1768569032500!5m2!1sid!2sid"
+                                                                class="maps-embed"
+                                                                style="border:0px;position:absolute;"></iframe>
+                                                        </div>
+                                                        <button
+                                                            class="btn-maps btn btn-sm btn-pilled btn-block btn-accent mt-1 mb-4">Edit
+                                                            Denah Lokasi</button>
+                                                        <div
+                                                            class="text-center animate__animated animate__fadeInUp animate__slow">
+                                                            <div class="color-accent editable font-weight-bold"
+                                                                style="font-size:14px;">✤ Kediaman Wanita ✤</div>
+                                                            <div class="editable mb-3" style="font-size:14px;">
+                                                                Dk.Mekarah,
+                                                                Ds.Sidobandung<br />Kec.Balen Kab.Bojonegoro</div>
+                                                            <a href="https://maps.app.goo.gl/SiLX4eobSQb9Z6bV6"
+                                                                target="_blank" rel="noreferrer noopener"
+                                                                class="btn-maps-link mx-auto btn btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow"
+                                                                style="gap:8px;max-width:200px;">
+                                                                Petunjuk Ke Lokasi</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 11 Gift -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div class="px-3 d-flex justify-content-center align-items-center"
+                                                style="height:100%;">
+                                                <div class="text-center" style="width:100%;">
+                                                    <div class="mb-3 image-editable mx-auto animate__animated animate__fadeInDown animate__slower"
+                                                        style="height:auto;width:130px;overflow:hidden;">
+                                                        <img src="assets/images/galleries/301467-gallery-WG4gvfspKV.png"
+                                                            alt="Icon"
+                                                            style="width: 100%; height: 100%; object-fit: contain;" />
+                                                    </div>
+                                                    <div class="color-accent h4 mb-2 editable animate__animated animate__fadeInDown animate__slower font-latin"
+                                                        style="font-size:40px;">Tanda Kasih</div>
+                                                    <div class="editable mb-4 animate__animated animate__fadeInDown animate__slower"
+                                                        style="font-size:14.4px;">Terima kasih telah menambah semangat
+                                                        kegembiraan pernikahan kami dengan kehadiran dan hadiah indah
+                                                        Anda.</div>
+                                                    <div style="display:flex;gap:8px;"><button
+                                                            class="btn-gift btn btn-block btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow"
+                                                            style="max-width:150px;margin:auto;font-size:14.4px;">🎁
+                                                            Cashless</button></div>
+                                                    <div class="gift-container mt-3 p-4 rounded animate__animated animate__zoomIn animate__slow"
+                                                        style="display:inherit;">
+                                                        <div class="d-flex">
+                                                            <div class="mx-auto">
+                                                                <div class="d-flex align-items-center mb-3">
+                                                                    <div class="image-editable"
+                                                                        style="width:80px;height:50px;overflow:hidden;background-color:rgb(255, 255, 255);border-radius:0.5rem;">
+                                                                        <img src="assets/images/assets/10232025_bri_logo_rgb-01.png"
+                                                                            alt="bri"
+                                                                            style="width: 100%; height: 100%; object-fit: contain;" />
+                                                                    </div>
+                                                                    <div class="text-left pl-2">
+                                                                        <div class="editable account-number font-weight-bold h5 mb-0"
+                                                                            style="display:inline;">6184 0100 6929 509
+                                                                        </div>
+                                                                        <div class="editable" style="font-size:14.4px;">
+                                                                            BRI : Syntia Amanda Febriyani</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Slide 12 Penutup -->
+                                    <li class="satumomen_slide">
+                                        <div class="container-mobile "
+                                            style="background-image: url(assets/images/themes/vintage-moment/bg.webp);">
+                                            <div class="frame">
+                                                <img class="frame-tl w-100 animate__animated animate__fadeInDown animate__slower"
+                                                    src="assets/images/themes/vintage-moment/tm.webp" alt="frame">
+                                                <img class="frame-bl w-100 animate__animated animate__fadeInUp animate__slower"
+                                                    src="assets/images/themes/vintage-moment/bm.webp" alt="frame">
+                                                <img class="frame-bl animate__animated animate__fadeInLeft animate__slower"
+                                                    src="assets/images/themes/vintage-moment/left.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInRight animate__slower"
+                                                    src="assets/images/themes/vintage-moment/right.webp" alt="frame">
+
+                                                <img class="frame-tl frame-cover animate__animated animate__fadeInTopLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tl.webp" alt="frame">
+                                                <img class="frame-tr frame-cover animate__animated animate__fadeInTopRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/tr.webp" alt="frame">
+
+                                                <img class="frame-bl animate__animated animate__fadeInBottomLeft animate__slow"
+                                                    src="assets/images/themes/vintage-moment/bl.webp" alt="frame">
+                                                <img class="frame-br animate__animated animate__fadeInBottomRight animate__slow"
+                                                    src="assets/images/themes/vintage-moment/br.webp" alt="frame">
+                                            </div>
+                                            <div
+                                                class="px-3 watermark d-flex flex-column justify-content-center align-items-center h-100 w-100">
+                                                <div
+                                                    class="mb-4 text-center animate__animated animate__fadeInDown animate__slower">
+                                                    <div class="editable" style="font-size:14.4px;">✤ Penutup ✤</div>
+                                                </div>
+                                                <div class="mb-3 image-editable mx-auto animate__animated animate__fadeInDown animate__slower"
+                                                    style="height:auto;width:130px;overflow:hidden;">
+                                                    <img src="assets/images/galleries/301467-gallery-WG4gvfspKV.png"
+                                                        alt="Icon"
+                                                        style="width: 100%; height: 100%; object-fit: contain;" />
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="color-accent editable animate__animated animate__fadeInDown animate__slower font-weight-bold"
+                                                        style="font-size:14px;">✤ Matur Nuwun ✤</div>
+                                                    <div class="editable mb-2 animate__animated animate__zoomIn animate__slower"
+                                                        style="font-size:14px;">Matur nuwun sampun agungaken, kalihinan
+                                                        panjenengan dhateng panggonan kami, semoga kanthi rahayu lan
+                                                        sregep tanpa rintangan, inggih punika waktu mugi-mugi ngrangsang
+                                                        suka.</div>
+                                                </div>
+                                                <div class="mt-3 image-editable mx-auto animate__animated animate__fadeInUp animate__slower"
+                                                    style="height:auto;width:130px;overflow:hidden;">
+                                                    <img src="assets/images/galleries/301467-gallery-FMgCPTNp2h.png"
+                                                        alt="Icon"
+                                                        style="width: 100%; height: 100%; object-fit: contain;" />
+                                                </div>
+                                                <div class="watermark-placeholder text-center"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Menu -->
+                        <div id="smMenu" class="satumomen_menu">
+                            <ul class="satumomen_menu_list">
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-envelope"
+                                        style="color:currentColor;"></i><span>Opening</span></li>
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-star-and-crescent"
+                                        style="color:currentColor;"></i><span>Quotes</span></li>
+
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-article"
+                                        style="color:currentColor;"></i><span>Salam</span></li>
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-heart"
+                                        style="color:currentColor;"></i><span>Mempelai</span></li>
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-calendar-check"
+                                        style="color:currentColor;"></i><span>Akad</span></li>
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-calendar-check"
+                                        style="color:currentColor;"></i><span>Resepsi</span></li>
+                                <!-- RSVP Item Removed -->
+
+                                <li class="satumomen_menu_item">
+                                    <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M8.532 2.937a6.89 6.89 0 0 1 7.034.058C17.71 4.327 19.012 6.705 19 9.26c-.05 2.54-1.447 4.929-3.193 6.775a18.727 18.727 0 0 1-3.358 2.82 1.173 1.173 0 0 1-.408.144.82.82 0 0 1-.39-.119 18.515 18.515 0 0 1-4.839-4.547A9.28 9.28 0 0 1 5 9.134c-.001-2.562 1.347-4.928 3.532-6.197Zm1.262 7.258a2.378 2.378 0 0 0 2.198 1.497 2.339 2.339 0 0 0 1.683-.701c.446-.454.696-1.07.694-1.713a2.423 2.423 0 0 0-1.462-2.243 2.346 2.346 0 0 0-2.594.52 2.455 2.455 0 0 0-.519 2.64Z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                    <span>Maps</span>
+                                </li>
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-gift"
+                                        style="color:currentColor;"></i><span>Gift</span></li>
+                                <li class="satumomen_menu_item"><i class="icon ph-fill ph-mosque"
+                                        style="color:currentColor;"></i><span>Thanks</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="floating-action d-flex align-items-end flex-column">
+                            <div id="btnMusic" class="btn-float">
+                                <i class="icon ph-fill ph-play play"></i>
+                                <i class="icon ph-fill ph-pause pause"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightboxWrapper" class="lightbox-wrapper">
+            <div class="lightbox-list"></div>
+            <a href="#" id="lightboxCloseBtn" class="btn-lightbox"><svg xmlns="http://www.w3.org/2000/svg" height="24"
+                    width="24" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 0 1 1.414 0L10 8.586l4.293-4.293a1 1 0 1 1 1.414 1.414L11.414 10l4.293 4.293a1 1 0 0 1-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L8.586 10 4.293 5.707a1 1 0 0 1 0-1.414z"
+                        clip-rule="evenodd" />
+                </svg></a>
+            <div class="lightbox-navigation">
+                <a href="#" id="lightboxPrevBtn" class="lightbox-arrow" data-index="0"><svg
+                        xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+                    </svg></a>
+                <a href="#" id="lightboxNextBtn" class="lightbox-arrow" data-index="0"><svg
+                        xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+                    </svg></a>
+            </div>
+        </div>
+
+        <div id="rsvpModal" class="modal-backdrop fade" style="display: none;">
+            <div class="modal-dialog" style="max-width: 90%; width: 400px; margin: 1.75rem auto;">
+                <div class="modal-content"
+                    style="background-color: #fff !important; opacity: 1 !important; border: 1px solid var(--inv-border); border-radius: 1rem; color: var(--inv-base);">
+                    <div class="p-4">
+                        <h4 class="text-center font-latin mb-4" style="font-size: 32px;">Konfirmasi Kehadiran</h4>
+                        <form id="rsvp-form" class="rsvp-form">
+                            <div class="form-group mb-3">
+                                <label for="guest-name" style="font-weight: bold;">Nama</label>
+                                <input type="text" id="guest-name" class="form-control" placeholder="Nama Tamu"
+                                    style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--inv-border);"
+                                    readonly>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="guest-attendance" style="font-weight: bold;">Kehadiran</label>
+                                <select id="guest-attendance" class="form-control"
+                                    style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--inv-border);">
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Tidak Hadir">Tidak Hadir</option>
+                                    <option value="Masih Ragu">Masih Ragu</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="guest-message" style="font-weight: bold;">Ucapan &amp; Doa</label>
+                                <textarea id="guest-message" class="form-control" rows="3"
+                                    placeholder="Tulis ucapan dan doa..."
+                                    style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--inv-border);"></textarea>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary rounded-pill px-4">Kirim RSVP</button>
+                                <button type="button" class="btn btn-secondary rounded-pill px-4 ml-2"
+                                    onclick="closeModal(document.getElementById('rsvpModal'))"
+                                    style="background: transparent; border: 1px solid var(--inv-accent); color: var(--inv-accent);">Batal</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Javascript -->
+    <script src="assets/js/theme-app.js"></script>
+    <script src="assets/js/themesv2.js"></script>
+</body>
+
+</html>
